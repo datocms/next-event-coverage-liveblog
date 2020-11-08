@@ -10,6 +10,13 @@
   "dependencies": {
     "next": "10.0.1",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-datocms": "^1.4.5",
+    "react-dom": "17.0.1",
+    "react-markdown": "^5.0.2",
+    "react-timeago": "^5.2.0",
+    "react-transition-group": "^4.4.1",
+    "tiny-json-http": "^7.3.0",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^1.9.6"
   }
 }
