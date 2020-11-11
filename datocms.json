@@ -1,0 +1,10 @@
+{
+  "name": "Next.js Event Coverage Live-blog",
+  "description": "Uses DatoCMS Real-Time Updates API to update the visitor's page as soon as new content gets saved",
+  "previewImage": "https://www.datocms-assets.com/205/1605104748-screenshot2020-11-11-create-next-app.jpg?crop=top&fit=crop&h=500&w=600&auto=format",
+  "datocmsProjectId": "37412",
+  "deploymentType": "vercel",
+  "buildCommand": "npm run build",
+  "datocmsApiTokenEnvName": "NEXT_PUBLIC_DATOCMS_API_TOKEN",
+  "livePreviewUrl": "https://next-event-coverage-liveblog.vercel.app/"
+}
