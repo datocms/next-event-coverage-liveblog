@@ -1,9 +1,9 @@
-import Head from "next/head";
-import { request } from "../lib/datocms";
-import { Image, useQuerySubscription } from "react-datocms";
-import TimeAgo from "react-timeago";
-import ReactMarkdown from "react-markdown";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Head from 'next/head';
+import { request } from '../lib/datocms';
+import { Image, useQuerySubscription } from 'react-datocms';
+import TimeAgo from 'react-timeago';
+import ReactMarkdown from 'react-markdown';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 export async function getServerSideProps() {
   const graphqlRequest = {
@@ -79,9 +79,9 @@ export default function Home({ subscription }) {
       </div>
 
       <div className="max-w-screen-sm mx-auto text-center mt-20 mb-12">
-        {status === "connecting" ? (
+        {status === 'connecting' ? (
           <div>Connecting to DatoCMS...</div>
-        ) : status === "connected" ? (
+        ) : status === 'connected' ? (
           <div className="flex flex-col md:flex-row items-center justify-center">
             <span className="flex h-3 w-3 relative mb-3 md:mb-0 md:mr-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
@@ -115,10 +115,10 @@ export default function Home({ subscription }) {
               <CSSTransition
                 key={post.id}
                 classNames={{
-                  enter: "post-enter",
-                  enterActive: "post-enter-active",
-                  exit: "post-exit",
-                  exitActive: "post-exit-active",
+                  enter: 'post-enter',
+                  enterActive: 'post-enter-active',
+                  exit: 'post-exit',
+                  exitActive: 'post-exit-active',
                 }}
                 timeout={{ enter: 1200, exit: 1200 }}
               >
@@ -139,11 +139,14 @@ export default function Home({ subscription }) {
                   </div>
                   <div className="mt-4 grid grid-cols-2 text-xs md:text-sm text-gray-500 md:px-8 items-center pb-12">
                     <div className="flex items-center">
-                      <Image
-                        className="w-6 h-6 rounded-full mr-2 shadow"
-                        data={post.author.avatar.responsiveImage}
-                      />
-                      <div>{post.author.name}</div>
+                      <div className="w-8 h-8 relative">
+                        <Image
+                          className="rounded-full mr-2 shadow"
+                          layout="fill"
+                          data={post.author.avatar.responsiveImage}
+                        />
+                      </div>
+                      <div className="pl-2">{post.author.name}</div>
                     </div>
                     <div className="text-right">
                       <TimeAgo date={post._firstPublishedAt} />
