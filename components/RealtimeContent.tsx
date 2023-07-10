@@ -1,87 +1,39 @@
-import Head from 'next/head';
-import { request } from '../lib/datocms';
-import { Image, useQuerySubscription } from 'react-datocms';
+'use client';
+
+import { TypedDocumentNode } from '@graphql-typed-document-node/core';
+import { Image as DatocmsImage, useQuerySubscription } from 'react-datocms';
 import TimeAgo from 'react-timeago';
 import ReactMarkdown from 'react-markdown';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { Exact, HomePageQuery } from '@/gql/graphql';
+import { print } from "graphql";
 
-export async function getServerSideProps() {
-  const graphqlRequest = {
-    query: `
-      query HomePage($limit: IntType) {
-        posts: allPosts(first: $limit, orderBy:_firstPublishedAt_DESC) {
-          id
-          content
-          _firstPublishedAt
-          photos {
-            responsiveImage(imgixParams: {auto: [format]}) {
-              ...imageFields
-            }
-          }
-          author {
-            name
-            avatar {
-              responsiveImage(imgixParams: {auto: [format], w: 60}) {
-                ...imageFields
-              }
-            }
-          }
-        }
-      }
+type Subscription = {
+  query: TypedDocumentNode<
+    HomePageQuery,
+    Exact<{
+      limit?: any;
+    }>
+  >;
+  variables: { limit: number };
+  initialData: HomePageQuery;
+  token: string;
+};
 
-      fragment imageFields on ResponsiveImage {
-        aspectRatio
-        base64
-        height
-        sizes
-        src
-        srcSet
-        width
-        alt
-        title
-      }
-    `,
-    variables: { limit: 10 },
-  };
-
-  return {
-    props: {
-      subscription: {
-        ...graphqlRequest,
-        initialData: await request(graphqlRequest),
-        token: process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN,
-      },
-    },
-  };
-}
-
-export default function Home({ subscription }) {
-  const { data, error, status } = useQuerySubscription(subscription);
+export default function RealtimeContent({
+  subscription,
+}: {
+  subscription: Subscription;
+}) {
+  const { query, variables, initialData, token } = subscription;
+  const { data, error, status } = useQuerySubscription({ query: print(query), variables, initialData, token, enabled: true });
 
   return (
-    <div className="text-gray-700 body-font py-12 bg-gray-100 px-10">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <div className="max-w-screen-sm mx-auto text-center">
-        <p className="text-base leading-6 text-indigo-600 font-semibold tracking-wide uppercase">
-          Real-times Updates Demo
-        </p>
-        <h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-5xl sm:leading-10">
-          Event Coverage LiveBlog
-        </h3>
-        <p className="mt-4 max-w-xl text-xl leading-7 text-gray-500 lg:mx-auto">
-          A simple Next.js + Typescript + Tailwind project to demonstrate
-          real-time capabilities of DatoCMS
-        </p>
-      </div>
-
+    <>
       <div className="max-w-screen-sm mx-auto text-center mt-20 mb-12">
-        {status === 'connecting' ? (
-          <div>Connecting to DatoCMS...</div>
-        ) : status === 'connected' ? (
+        {status === 'connecting' && <div>Connecting to DatoCMS...</div>}
+
+        {status === 'connected' && (
           <div className="flex flex-col md:flex-row items-center justify-center">
             <span className="flex h-3 w-3 relative mb-3 md:mb-0 md:mr-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
@@ -89,9 +41,9 @@ export default function Home({ subscription }) {
             </span>
             <span>Connected to DatoCMS, receiving live updates!</span>
           </div>
-        ) : (
-          <div>Connection closed</div>
         )}
+
+        {status === 'closed' && <div>Connection closed</div>}
       </div>
 
       {error && (
@@ -125,7 +77,7 @@ export default function Home({ subscription }) {
                 <div>
                   <div className="shadow-xl rounded-lg overflow-hidden bg-white">
                     {post.photos.map((photo) => (
-                      <Image
+                      photo.responsiveImage && <DatocmsImage
                         key={photo.responsiveImage.src}
                         className="w-full"
                         data={photo.responsiveImage}
@@ -133,18 +85,18 @@ export default function Home({ subscription }) {
                     ))}
                     {post.content && (
                       <div className="p-4 md:p-8 md:text-xl content">
-                        <ReactMarkdown children={post.content} />
+                        <ReactMarkdown>{post.content}</ReactMarkdown>
                       </div>
                     )}
                   </div>
                   <div className="mt-4 grid grid-cols-2 text-xs md:text-sm text-gray-500 md:px-8 items-center pb-12">
                     <div className="flex items-center">
                       <div className="w-8 h-8 relative">
-                        <Image
+                        {post.author.avatar && <DatocmsImage
                           className="rounded-full mr-2 shadow"
                           layout="fill"
                           data={post.author.avatar.responsiveImage}
-                        />
+                        />}
                       </div>
                       <div className="pl-2">{post.author.name}</div>
                     </div>
@@ -158,6 +110,6 @@ export default function Home({ subscription }) {
           </TransitionGroup>
         )}
       </div>
-    </div>
+    </>
   );
 }
