@@ -7,7 +7,8 @@ import ReactMarkdown from 'react-markdown';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { Exact, HomePageQuery } from '@/gql/graphql';
 import { getFragmentData, graphql } from '@/gql';
-import { print } from "graphql";
+import { print } from 'graphql';
+import { useEffect, useState } from 'react';
 
 const imageFields = graphql(`
   fragment imageFields on ResponsiveImage {
@@ -40,11 +41,22 @@ export default function RealtimeContent({
 }: {
   subscription: Subscription;
 }) {
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => setHydrated(true), []);
+
   const { query, variables, initialData, token } = subscription;
-  const { data, error, status } = useQuerySubscription({ query: print(query), variables, initialData, token, enabled: true });
+  
+  const { data, error, status } = useQuerySubscription({
+    query: print(query),
+    variables,
+    initialData,
+    token,
+    enabled: true,
+  });
 
   return (
-    <>
+    hydrated && <>
       <div className="max-w-screen-sm mx-auto text-center mt-20 mb-12">
         {status === 'connecting' && <div>Connecting to DatoCMS...</div>}
 
@@ -91,13 +103,20 @@ export default function RealtimeContent({
               >
                 <div>
                   <div className="shadow-xl rounded-lg overflow-hidden bg-white">
-                    {post.photos.map((photo) => getFragmentData(imageFields, photo.responsiveImage)).map((photo) => (
-                      photo && <DatocmsImage
-                        key={photo.src}
-                        className="w-full"
-                        data={photo}
-                      />
-                    ))}
+                    {post.photos
+                      .map((photo) =>
+                        getFragmentData(imageFields, photo.responsiveImage),
+                      )
+                      .map(
+                        (photo) =>
+                          photo && (
+                            <DatocmsImage
+                              key={photo.src}
+                              className="w-full"
+                              data={photo}
+                            />
+                          ),
+                      )}
                     {post.content && (
                       <div className="p-4 md:p-8 md:text-xl content">
                         <ReactMarkdown>{post.content}</ReactMarkdown>
@@ -107,11 +126,18 @@ export default function RealtimeContent({
                   <div className="mt-4 grid grid-cols-2 text-xs md:text-sm text-gray-500 md:px-8 items-center pb-12">
                     <div className="flex items-center">
                       <div className="w-8 h-8 relative">
-                        {post.author.avatar && <DatocmsImage
-                          className="rounded-full mr-2 shadow"
-                          layout="fill"
-                          data={getFragmentData(imageFields, post.author.avatar.responsiveImage)!}
-                        />}
+                        {post.author.avatar && (
+                          <DatocmsImage
+                            className="rounded-full mr-2 shadow"
+                            layout="fill"
+                            data={
+                              getFragmentData(
+                                imageFields,
+                                post.author.avatar.responsiveImage,
+                              )!
+                            }
+                          />
+                        )}
                       </div>
                       <div className="pl-2">{post.author.name}</div>
                     </div>
