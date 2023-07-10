@@ -21,6 +21,9 @@ module.exports = {
 					preset: "client",
 					// String documentMode (https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#when-to-use-a-string-documentmode) does not work with nested fragments
 					// config: { documentMode: "string" },
+					config: {
+						enumsAsTypes: true,
+					},
 					presetConfig: {
 						fragmentMasking: { unmaskFunctionName: "getFragmentData" },
 						strictScalars: true,

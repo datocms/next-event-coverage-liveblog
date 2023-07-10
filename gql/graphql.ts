@@ -46,32 +46,31 @@ export type AuthorModelFilter = {
   updatedAt?: InputMaybe<UpdatedAtFilter>;
 };
 
-export enum AuthorModelOrderBy {
-  CreatedAtAsc = '_createdAt_ASC',
-  CreatedAtDesc = '_createdAt_DESC',
-  FirstPublishedAtAsc = '_firstPublishedAt_ASC',
-  FirstPublishedAtDesc = '_firstPublishedAt_DESC',
-  IsValidAsc = '_isValid_ASC',
-  IsValidDesc = '_isValid_DESC',
-  PublicationScheduledAtAsc = '_publicationScheduledAt_ASC',
-  PublicationScheduledAtDesc = '_publicationScheduledAt_DESC',
-  PublishedAtAsc = '_publishedAt_ASC',
-  PublishedAtDesc = '_publishedAt_DESC',
-  StatusAsc = '_status_ASC',
-  StatusDesc = '_status_DESC',
-  UnpublishingScheduledAtAsc = '_unpublishingScheduledAt_ASC',
-  UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
-  UpdatedAtAsc = '_updatedAt_ASC',
-  UpdatedAtDesc = '_updatedAt_DESC',
-  CreatedAtAsc = 'createdAt_ASC',
-  CreatedAtDesc = 'createdAt_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC'
-}
+export type AuthorModelOrderBy =
+  | '_createdAt_ASC'
+  | '_createdAt_DESC'
+  | '_firstPublishedAt_ASC'
+  | '_firstPublishedAt_DESC'
+  | '_isValid_ASC'
+  | '_isValid_DESC'
+  | '_publicationScheduledAt_ASC'
+  | '_publicationScheduledAt_DESC'
+  | '_publishedAt_ASC'
+  | '_publishedAt_DESC'
+  | '_status_ASC'
+  | '_status_DESC'
+  | '_unpublishingScheduledAt_ASC'
+  | '_unpublishingScheduledAt_DESC'
+  | '_updatedAt_ASC'
+  | '_updatedAt_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC';
 
 /** Record of type Author (author) */
 export type AuthorRecord = RecordInterface & {
@@ -113,20 +112,19 @@ export type CollectionMetadata = {
   count: Scalars['IntType']['output'];
 };
 
-export enum ColorBucketType {
-  Black = 'black',
-  Blue = 'blue',
-  Brown = 'brown',
-  Cyan = 'cyan',
-  Green = 'green',
-  Grey = 'grey',
-  Orange = 'orange',
-  Pink = 'pink',
-  Purple = 'purple',
-  Red = 'red',
-  White = 'white',
-  Yellow = 'yellow'
-}
+export type ColorBucketType =
+  | 'black'
+  | 'blue'
+  | 'brown'
+  | 'cyan'
+  | 'green'
+  | 'grey'
+  | 'orange'
+  | 'pink'
+  | 'purple'
+  | 'red'
+  | 'white'
+  | 'yellow';
 
 export type ColorField = {
   __typename?: 'ColorField';
@@ -156,11 +154,10 @@ export type CreatedAtFilter = {
   neq?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export enum FaviconType {
-  AppleTouchIcon = 'appleTouchIcon',
-  Icon = 'icon',
-  MsApplication = 'msApplication'
-}
+export type FaviconType =
+  | 'appleTouchIcon'
+  | 'icon'
+  | 'msApplication';
 
 export type FileField = FileFieldInterface & {
   __typename?: 'FileField';
@@ -1591,184 +1588,161 @@ export type ImgixParams = {
   w?: InputMaybe<Scalars['FloatType']['input']>;
 };
 
-export enum ImgixParamsAuto {
-  Compress = 'compress',
-  Enhance = 'enhance',
-  Format = 'format',
-  Redeye = 'redeye'
-}
+export type ImgixParamsAuto =
+  | 'compress'
+  | 'enhance'
+  | 'format'
+  | 'redeye';
 
-export enum ImgixParamsBlendAlign {
-  Bottom = 'bottom',
-  Center = 'center',
-  Left = 'left',
-  Middle = 'middle',
-  Right = 'right',
-  Top = 'top'
-}
+export type ImgixParamsBlendAlign =
+  | 'bottom'
+  | 'center'
+  | 'left'
+  | 'middle'
+  | 'right'
+  | 'top';
 
-export enum ImgixParamsBlendCrop {
-  Bottom = 'bottom',
-  Faces = 'faces',
-  Left = 'left',
-  Right = 'right',
-  Top = 'top'
-}
+export type ImgixParamsBlendCrop =
+  | 'bottom'
+  | 'faces'
+  | 'left'
+  | 'right'
+  | 'top';
 
-export enum ImgixParamsBlendFit {
-  Clamp = 'clamp',
-  Clip = 'clip',
-  Crop = 'crop',
-  Max = 'max',
-  Scale = 'scale'
-}
+export type ImgixParamsBlendFit =
+  | 'clamp'
+  | 'clip'
+  | 'crop'
+  | 'max'
+  | 'scale';
 
-export enum ImgixParamsBlendMode {
-  Burn = 'burn',
-  Color = 'color',
-  Darken = 'darken',
-  Difference = 'difference',
-  Dodge = 'dodge',
-  Exclusion = 'exclusion',
-  Hardlight = 'hardlight',
-  Hue = 'hue',
-  Lighten = 'lighten',
-  Luminosity = 'luminosity',
-  Multiply = 'multiply',
-  Normal = 'normal',
-  Overlay = 'overlay',
-  Saturation = 'saturation',
-  Screen = 'screen',
-  Softlight = 'softlight'
-}
+export type ImgixParamsBlendMode =
+  | 'burn'
+  | 'color'
+  | 'darken'
+  | 'difference'
+  | 'dodge'
+  | 'exclusion'
+  | 'hardlight'
+  | 'hue'
+  | 'lighten'
+  | 'luminosity'
+  | 'multiply'
+  | 'normal'
+  | 'overlay'
+  | 'saturation'
+  | 'screen'
+  | 'softlight';
 
-export enum ImgixParamsBlendSize {
-  Inherit = 'inherit'
-}
+export type ImgixParamsBlendSize =
+  | 'inherit';
 
-export enum ImgixParamsCh {
-  Dpr = 'dpr',
-  SaveData = 'saveData',
-  Width = 'width'
-}
+export type ImgixParamsCh =
+  | 'dpr'
+  | 'saveData'
+  | 'width';
 
-export enum ImgixParamsCrop {
-  Bottom = 'bottom',
-  Edges = 'edges',
-  Entropy = 'entropy',
-  Faces = 'faces',
-  Focalpoint = 'focalpoint',
-  Left = 'left',
-  Right = 'right',
-  Top = 'top'
-}
+export type ImgixParamsCrop =
+  | 'bottom'
+  | 'edges'
+  | 'entropy'
+  | 'faces'
+  | 'focalpoint'
+  | 'left'
+  | 'right'
+  | 'top';
 
-export enum ImgixParamsCs {
-  Adobergb1998 = 'adobergb1998',
-  Srgb = 'srgb',
-  Strip = 'strip',
-  Tinysrgb = 'tinysrgb'
-}
+export type ImgixParamsCs =
+  | 'adobergb1998'
+  | 'srgb'
+  | 'strip'
+  | 'tinysrgb';
 
-export enum ImgixParamsFill {
-  Blur = 'blur',
-  Solid = 'solid'
-}
+export type ImgixParamsFill =
+  | 'blur'
+  | 'solid';
 
-export enum ImgixParamsFit {
-  Clamp = 'clamp',
-  Clip = 'clip',
-  Crop = 'crop',
-  Facearea = 'facearea',
-  Fill = 'fill',
-  Fillmax = 'fillmax',
-  Max = 'max',
-  Min = 'min',
-  Scale = 'scale'
-}
+export type ImgixParamsFit =
+  | 'clamp'
+  | 'clip'
+  | 'crop'
+  | 'facearea'
+  | 'fill'
+  | 'fillmax'
+  | 'max'
+  | 'min'
+  | 'scale';
 
-export enum ImgixParamsFlip {
-  H = 'h',
-  Hv = 'hv',
-  V = 'v'
-}
+export type ImgixParamsFlip =
+  | 'h'
+  | 'hv'
+  | 'v';
 
-export enum ImgixParamsFm {
-  Avif = 'avif',
-  Blurhash = 'blurhash',
-  Gif = 'gif',
-  Jp2 = 'jp2',
-  Jpg = 'jpg',
-  Json = 'json',
-  Jxr = 'jxr',
-  Mp4 = 'mp4',
-  Pjpg = 'pjpg',
-  Png = 'png',
-  Png8 = 'png8',
-  Png32 = 'png32',
-  Webm = 'webm',
-  Webp = 'webp'
-}
+export type ImgixParamsFm =
+  | 'avif'
+  | 'blurhash'
+  | 'gif'
+  | 'jp2'
+  | 'jpg'
+  | 'json'
+  | 'jxr'
+  | 'mp4'
+  | 'pjpg'
+  | 'png'
+  | 'png8'
+  | 'png32'
+  | 'webm'
+  | 'webp';
 
-export enum ImgixParamsIptc {
-  Allow = 'allow',
-  Block = 'block'
-}
+export type ImgixParamsIptc =
+  | 'allow'
+  | 'block';
 
-export enum ImgixParamsMarkAlign {
-  Bottom = 'bottom',
-  Center = 'center',
-  Left = 'left',
-  Middle = 'middle',
-  Right = 'right',
-  Top = 'top'
-}
+export type ImgixParamsMarkAlign =
+  | 'bottom'
+  | 'center'
+  | 'left'
+  | 'middle'
+  | 'right'
+  | 'top';
 
-export enum ImgixParamsMarkFit {
-  Clip = 'clip',
-  Crop = 'crop',
-  Fill = 'fill',
-  Max = 'max',
-  Scale = 'scale'
-}
+export type ImgixParamsMarkFit =
+  | 'clip'
+  | 'crop'
+  | 'fill'
+  | 'max'
+  | 'scale';
 
-export enum ImgixParamsMarkTile {
-  Grid = 'grid'
-}
+export type ImgixParamsMarkTile =
+  | 'grid';
 
-export enum ImgixParamsPalette {
-  Css = 'css',
-  Json = 'json'
-}
+export type ImgixParamsPalette =
+  | 'css'
+  | 'json';
 
-export enum ImgixParamsTransparency {
-  Grid = 'grid'
-}
+export type ImgixParamsTransparency =
+  | 'grid';
 
-export enum ImgixParamsTrim {
-  Auto = 'auto',
-  Color = 'color'
-}
+export type ImgixParamsTrim =
+  | 'auto'
+  | 'color';
 
-export enum ImgixParamsTxtAlign {
-  Bottom = 'bottom',
-  Center = 'center',
-  Left = 'left',
-  Middle = 'middle',
-  Right = 'right',
-  Top = 'top'
-}
+export type ImgixParamsTxtAlign =
+  | 'bottom'
+  | 'center'
+  | 'left'
+  | 'middle'
+  | 'right'
+  | 'top';
 
-export enum ImgixParamsTxtClip {
-  Ellipsis = 'ellipsis',
-  End = 'end',
-  Middle = 'middle',
-  Start = 'start'
-}
+export type ImgixParamsTxtClip =
+  | 'ellipsis'
+  | 'end'
+  | 'middle'
+  | 'start';
 
-export enum ImgixParamsTxtFit {
-  Max = 'max'
-}
+export type ImgixParamsTxtFit =
+  | 'max';
 
 /** Specifies how to filter by usage */
 export type InUseFilter = {
@@ -1788,11 +1762,10 @@ export type ItemIdFilter = {
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']['input']>>>;
 };
 
-export enum ItemStatus {
-  Draft = 'draft',
-  Published = 'published',
-  Updated = 'updated'
-}
+export type ItemStatus =
+  | 'draft'
+  | 'published'
+  | 'updated';
 
 /** Specifies how to filter Single-link fields */
 export type LinkFilter = {
@@ -1808,11 +1781,10 @@ export type LinkFilter = {
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']['input']>>>;
 };
 
-export enum MuxThumbnailFormatType {
-  Gif = 'gif',
-  Jpg = 'jpg',
-  Png = 'png'
-}
+export type MuxThumbnailFormatType =
+  | 'gif'
+  | 'jpg'
+  | 'png';
 
 /** Specifies how to filter by image orientation */
 export type OrientationFilter = {
@@ -1841,30 +1813,29 @@ export type PostModelFilter = {
   updatedAt?: InputMaybe<UpdatedAtFilter>;
 };
 
-export enum PostModelOrderBy {
-  CreatedAtAsc = '_createdAt_ASC',
-  CreatedAtDesc = '_createdAt_DESC',
-  FirstPublishedAtAsc = '_firstPublishedAt_ASC',
-  FirstPublishedAtDesc = '_firstPublishedAt_DESC',
-  IsValidAsc = '_isValid_ASC',
-  IsValidDesc = '_isValid_DESC',
-  PublicationScheduledAtAsc = '_publicationScheduledAt_ASC',
-  PublicationScheduledAtDesc = '_publicationScheduledAt_DESC',
-  PublishedAtAsc = '_publishedAt_ASC',
-  PublishedAtDesc = '_publishedAt_DESC',
-  StatusAsc = '_status_ASC',
-  StatusDesc = '_status_DESC',
-  UnpublishingScheduledAtAsc = '_unpublishingScheduledAt_ASC',
-  UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
-  UpdatedAtAsc = '_updatedAt_ASC',
-  UpdatedAtDesc = '_updatedAt_DESC',
-  CreatedAtAsc = 'createdAt_ASC',
-  CreatedAtDesc = 'createdAt_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC'
-}
+export type PostModelOrderBy =
+  | '_createdAt_ASC'
+  | '_createdAt_DESC'
+  | '_firstPublishedAt_ASC'
+  | '_firstPublishedAt_DESC'
+  | '_isValid_ASC'
+  | '_isValid_DESC'
+  | '_publicationScheduledAt_ASC'
+  | '_publicationScheduledAt_DESC'
+  | '_publishedAt_ASC'
+  | '_publishedAt_DESC'
+  | '_status_ASC'
+  | '_status_DESC'
+  | '_unpublishingScheduledAt_ASC'
+  | '_unpublishingScheduledAt_DESC'
+  | '_updatedAt_ASC'
+  | '_updatedAt_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC';
 
 /** Record of type Post (post) */
 export type PostRecord = RecordInterface & {
@@ -2069,12 +2040,11 @@ export type ResolutionFilter = {
   notIn?: InputMaybe<Array<InputMaybe<ResolutionType>>>;
 };
 
-export enum ResolutionType {
-  Icon = 'icon',
-  Large = 'large',
-  Medium = 'medium',
-  Small = 'small'
-}
+export type ResolutionType =
+  | 'icon'
+  | 'large'
+  | 'medium'
+  | 'small';
 
 export type ResponsiveImage = {
   __typename?: 'ResponsiveImage';
@@ -2118,9 +2088,8 @@ export type SiteGlobalSeoArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
-export enum SiteLocale {
-  En = 'en'
-}
+export type SiteLocale =
+  | 'en';
 
 /** Specifies how to filter by status */
 export type StatusFilter = {
@@ -2403,32 +2372,30 @@ export type UploadNotesFilter = {
   notMatches?: InputMaybe<StringMatchesFilter>;
 };
 
-export enum UploadOrderBy {
-  CreatedAtAsc = '_createdAt_ASC',
-  CreatedAtDesc = '_createdAt_DESC',
-  UpdatedAtAsc = '_updatedAt_ASC',
-  UpdatedAtDesc = '_updatedAt_DESC',
-  BasenameAsc = 'basename_ASC',
-  BasenameDesc = 'basename_DESC',
-  FilenameAsc = 'filename_ASC',
-  FilenameDesc = 'filename_DESC',
-  FormatAsc = 'format_ASC',
-  FormatDesc = 'format_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  MimeTypeAsc = 'mimeType_ASC',
-  MimeTypeDesc = 'mimeType_DESC',
-  ResolutionAsc = 'resolution_ASC',
-  ResolutionDesc = 'resolution_DESC',
-  SizeAsc = 'size_ASC',
-  SizeDesc = 'size_DESC'
-}
+export type UploadOrderBy =
+  | '_createdAt_ASC'
+  | '_createdAt_DESC'
+  | '_updatedAt_ASC'
+  | '_updatedAt_DESC'
+  | 'basename_ASC'
+  | 'basename_DESC'
+  | 'filename_ASC'
+  | 'filename_DESC'
+  | 'format_ASC'
+  | 'format_DESC'
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'mimeType_ASC'
+  | 'mimeType_DESC'
+  | 'resolution_ASC'
+  | 'resolution_DESC'
+  | 'size_ASC'
+  | 'size_DESC';
 
-export enum UploadOrientation {
-  Landscape = 'landscape',
-  Portrait = 'portrait',
-  Square = 'square'
-}
+export type UploadOrientation =
+  | 'landscape'
+  | 'portrait'
+  | 'square';
 
 /** Specifies how to filter by size */
 export type UploadSizeFilter = {
@@ -2478,16 +2445,15 @@ export type UploadTitleFilter = {
   notMatches?: InputMaybe<StringMatchesFilter>;
 };
 
-export enum UploadType {
-  Archive = 'archive',
-  Audio = 'audio',
-  Image = 'image',
-  Pdfdocument = 'pdfdocument',
-  Presentation = 'presentation',
-  Richtext = 'richtext',
-  Spreadsheet = 'spreadsheet',
-  Video = 'video'
-}
+export type UploadType =
+  | 'archive'
+  | 'audio'
+  | 'image'
+  | 'pdfdocument'
+  | 'presentation'
+  | 'richtext'
+  | 'spreadsheet'
+  | 'video';
 
 /** Specifies how to filter by update datetime */
 export type UploadUpdatedAtFilter = {
@@ -2543,11 +2509,10 @@ export type UploadWidthFilter = {
   neq?: InputMaybe<Scalars['IntType']['input']>;
 };
 
-export enum VideoMp4Res {
-  High = 'high',
-  Low = 'low',
-  Medium = 'medium'
-}
+export type VideoMp4Res =
+  | 'high'
+  | 'low'
+  | 'medium';
 
 export type FocalPoint = {
   __typename?: 'focalPoint';

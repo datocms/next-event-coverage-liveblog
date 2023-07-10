@@ -25,18 +25,6 @@ const PAGE_CONTENT_QUERY = graphql(`
       }
     }
   }
-
-  fragment imageFields on ResponsiveImage {
-    aspectRatio
-    base64
-    height
-    sizes
-    src
-    srcSet
-    width
-    alt
-    title
-  }
 `);
 
 export const metadata = {

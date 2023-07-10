@@ -6,7 +6,22 @@ import TimeAgo from 'react-timeago';
 import ReactMarkdown from 'react-markdown';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { Exact, HomePageQuery } from '@/gql/graphql';
+import { getFragmentData, graphql } from '@/gql';
 import { print } from "graphql";
+
+const imageFields = graphql(`
+  fragment imageFields on ResponsiveImage {
+    aspectRatio
+    base64
+    height
+    sizes
+    src
+    srcSet
+    width
+    alt
+    title
+  }
+`);
 
 type Subscription = {
   query: TypedDocumentNode<
@@ -76,11 +91,11 @@ export default function RealtimeContent({
               >
                 <div>
                   <div className="shadow-xl rounded-lg overflow-hidden bg-white">
-                    {post.photos.map((photo) => (
-                      photo.responsiveImage && <DatocmsImage
-                        key={photo.responsiveImage.src}
+                    {post.photos.map((photo) => getFragmentData(imageFields, photo.responsiveImage)).map((photo) => (
+                      photo && <DatocmsImage
+                        key={photo.src}
                         className="w-full"
-                        data={photo.responsiveImage}
+                        data={photo}
                       />
                     ))}
                     {post.content && (
@@ -95,7 +110,7 @@ export default function RealtimeContent({
                         {post.author.avatar && <DatocmsImage
                           className="rounded-full mr-2 shadow"
                           layout="fill"
-                          data={post.author.avatar.responsiveImage}
+                          data={getFragmentData(imageFields, post.author.avatar.responsiveImage)!}
                         />}
                       </div>
                       <div className="pl-2">{post.author.name}</div>
