@@ -58,7 +58,7 @@ export default async function Home() {
           query: PAGE_CONTENT_QUERY,
           variables: { limit: 10 },
           initialData,
-          token: process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN!,
+          token: process.env.NEXT_PUBLIC_DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN!,
         }}
       />
     </div>

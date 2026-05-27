@@ -7,7 +7,7 @@ module.exports = {
 		{
 			"https://graphql.datocms.com": {
 				headers: {
-					Authorization: `Bearer ${process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN}`,
+					Authorization: `Bearer ${process.env.NEXT_PUBLIC_DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN}`,
 					"X-Exclude-Invalid": "true",
 				},
 			},
