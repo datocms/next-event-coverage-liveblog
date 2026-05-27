@@ -32,10 +32,10 @@ To learn more about how to integrate DatoCMS with your Next.js project, take a l
 
 ## Starting the development server
 
-First, create a `.env.local` and put a `NEXT_PUBLIC_DATOCMS_API_TOKEN` env variable containing the API token of your DatoCMS project:
+First, create a `.env.local` and put a `NEXT_PUBLIC_DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN` env variable containing the `CDA Only (Published)` token of your DatoCMS project:
 
 ```bash
-echo NEXT_PUBLIC_DATOCMS_API_TOKEN=<YOUR_API_TOKEN> > .env.local
+echo NEXT_PUBLIC_DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN=<YOUR_API_TOKEN> > .env.local
 ```
 
 Then, run the development server:

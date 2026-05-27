@@ -5,6 +5,11 @@
   "datocmsProjectId": "37412",
   "deploymentType": "vercel",
   "buildCommand": "npm run build",
-  "datocmsApiTokenEnvName": "NEXT_PUBLIC_DATOCMS_API_TOKEN",
-  "livePreviewUrl": "https://next-event-coverage-liveblog.vercel.app/"
+  "livePreviewUrl": "https://next-event-coverage-liveblog.vercel.app/",
+  "environmentVariables": {
+    "NEXT_PUBLIC_DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN": {
+      "type": "datocmsAccessToken",
+      "tokenName": "CDA Only (Published)"
+    }
+  }
 }
